@@ -7,7 +7,9 @@
     "rules": {
         "semicolon": [true, "always"],
         "quotemark": [true, "single", "avoid-template"],
-        "no-console": false
+        "trailing-comma": [true, {"multiline": "always", "singleline": "never"}],
+        "no-console": false,
+        "object-literal-sort-keys": false
     },
     "rulesDirectory": []
 }
