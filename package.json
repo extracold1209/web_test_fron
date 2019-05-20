@@ -5,8 +5,9 @@
   "license": "MIT",
   "scripts": {
     "start": "ts-node src/server/index.ts",
-    "dev": "nodemon --watch src/server/*.ts --exec ts-node src/server/index.ts",
+    "dev": "nodemon --delay 2500 --watch src/server/*.ts --exec ts-node src/server/index.ts",
     "build": "webpack",
+    "watch": "webpack -w",
     "lint": "tslint --project .",
     "fix": "tslint --project . --fix"
   },
@@ -27,10 +28,9 @@
     "webpack-cli": "^3.3.2"
   },
   "dependencies": {
+    "@material-ui/core": "^4.0.0-beta.2",
     "lodash": "^4.17.11",
-    "materialize-css": "^1.0.0",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-materialize": "^3.3.1"
+    "react-dom": "^16.8.6"
   }
 }
