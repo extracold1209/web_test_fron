@@ -1,5 +1,27 @@
+import { createBrowserHistory } from 'history';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Redirect, Route, Router, Switch } from 'react-router-dom';
 import App from './components/App';
+import Header from './components/Header';
 
-ReactDOM.render(<App/>, document.getElementById('workspace'));
+// import AdminLayout from "layouts/Admin/Admin.jsx";
+// import RTLLayout from "layouts/RTL/RTL.jsx";
+
+// import "assets/scss/black-dashboard-react.scss";
+// import "assets/demo/demo.css";
+// import "assets/css/nucleo-icons.css";
+
+const hist = createBrowserHistory();
+
+ReactDOM.render(
+  <Router history={hist}>
+    <Switch>
+      <Route exact={true} path='/' render={(props) => <App {...props} />} />
+      <Route exact={true} path='/header' render={(props) => <Header {...props}/>} />
+      {/* <Route path="/rtl" render={props => <RTLLayout {...props} />} /> */}
+      {/* <Redirect from="/" to="/admin/dashboard" /> */}
+    </Switch>
+  </Router>,
+  document.getElementById('workspace'),
+);

@@ -12,7 +12,7 @@ const defaultOptions = {
     mappingName: '/node_modules',
     libraryBasePath: path.resolve('node_modules'),
     libraryNames: [],
-}
+};
 
 export default (options?: IVendorRouterOptions) => {
     const { mappingName, libraryBasePath, libraryNames }
@@ -46,4 +46,4 @@ export default (options?: IVendorRouterOptions) => {
     );
 
     return nodeModulesRouter;
-}
+};
