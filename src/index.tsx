@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Redirect, Route, Router, Switch } from 'react-router-dom';
 import App from './components/App';
+import Footer from './components/Footer';
 import Header from './components/Header';
 
 // import AdminLayout from "layouts/Admin/Admin.jsx";
@@ -22,6 +23,7 @@ ReactDOM.render(
       {/* <Route path="/rtl" render={props => <RTLLayout {...props} />} /> */}
       {/* <Redirect from="/" to="/admin/dashboard" /> */}
     </Switch>
+    <Footer />
   </Router>,
   document.getElementById('workspace'),
 );
