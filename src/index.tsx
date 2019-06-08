@@ -9,7 +9,6 @@ import Sidebar from './components/Sidebar';
 
 // import AdminLayout from "layouts/Admin/Admin.jsx";
 // import RTLLayout from "layouts/RTL/RTL.jsx";
-import logo from './assets/img/react-logo.png';
 
 import './assets/css/nucleo-icons.css';
 import './assets/demo/demo.css';
@@ -21,11 +20,6 @@ ReactDOM.render(
   <Router history={hist}>
     <div className='wrapper'>
       <Route path='/' render={(props) => <Sidebar
-        logo={{
-          outterLink: 'https://www.creative-tim.com/',
-          text: 'Creative Tim',
-          imgSrc: logo,
-        }}
         toggleSidebar={() => { console.log('toggle Sidebar'); }}
         {...props} />} />
       <div className='main-panel'>
