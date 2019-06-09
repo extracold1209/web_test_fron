@@ -1,11 +1,14 @@
 import { createBrowserHistory } from 'history';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import { Redirect, Route, Router, Switch } from 'react-router-dom';
+import { createStore } from 'redux';
 import App from './components/App';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
+import Reducer from './store/modules';
 
 // import AdminLayout from "layouts/Admin/Admin.jsx";
 // import RTLLayout from "layouts/RTL/RTL.jsx";
@@ -15,27 +18,28 @@ import './assets/demo/demo.css';
 import './assets/scss/black-dashboard-react.scss';
 
 const hist = createBrowserHistory();
+const store = createStore(Reducer);
 
 ReactDOM.render(
-  <Router history={hist}>
-    <div className='wrapper'>
-      <Route path='/' render={(props) => <Sidebar
-        toggleSidebar={() => { console.log('toggle Sidebar'); }}
-        {...props} />} />
-      <div className='main-panel'>
-        <Header
-          sidebarOpened={false}
-          toggleSidebar={() => { console.log('toggleSidebar'); }}
-          brandText={'Hello Header'}
-        />
-        <Switch>
-          <Route exact={true} path='/' render={(props) => <App {...props} />} />
-          {/* <Route path="/rtl" render={props => <RTLLayout {...props} />} /> */}
-          {/* <Redirect from="/" to="/admin/dashboard" /> */}
-        </Switch>
-        <Footer />
+  <Provider store={store}>
+    <Router history={hist}>
+      <div className='wrapper'>
+        <Route path='/' render={(props) => <Sidebar
+          toggleSidebar={() => { console.log('toggle Sidebar'); }}
+          {...props} />} />
+        <div className='main-panel'>
+          <Header
+            brandText={'Hello Header'}
+          />
+          <Switch>
+            <Route exact={true} path='/' render={(props) => <App {...props} />} />
+            {/* <Route path="/rtl" render={props => <RTLLayout {...props} />} /> */}
+            {/* <Redirect from="/" to="/admin/dashboard" /> */}
+          </Switch>
+          <Footer />
+        </div>
       </div>
-    </div>
-  </Router>,
+    </Router>
+  </Provider>,
   document.getElementById('workspace'),
 );

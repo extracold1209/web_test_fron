@@ -1,8 +1,10 @@
 // nodejs library that concatenates classes
 import classNames from 'classnames';
 import React from 'react';
+import { actionCreators } from '../store/modules/sidebar';
 
 // reactstrap components
+import { connect } from 'react-redux';
 import {
     Button,
     Collapse,
@@ -19,10 +21,12 @@ import {
     NavLink,
     UncontrolledDropdown,
 } from 'reactstrap';
+import { bindActionCreators } from 'redux';
+import { IStoreState } from 'src/store/modules';
 
 interface IProps {
     sidebarOpened: boolean;
-    toggleSidebar: () => any;
+    SidebarOpenAction: typeof actionCreators;
     brandText: string;
 }
 
@@ -97,7 +101,9 @@ class AdminNavbar extends React.Component<IProps, IState> {
                                 <button
                                     className='navbar-toggler'
                                     type='button'
-                                    onClick={this.props.toggleSidebar}
+                                    onClick={() => {
+                                        this.props.SidebarOpenAction.toggleSidebar();
+                                    }}
                                 >
                                     <span className='navbar-toggler-bar bar1' />
                                     <span className='navbar-toggler-bar bar2' />
@@ -230,4 +236,10 @@ class AdminNavbar extends React.Component<IProps, IState> {
     }
 }
 
-export default AdminNavbar;
+export default connect(
+    ({ sidebar }: IStoreState) => ({ sidebarOpened: sidebar.sidebarOpened }),
+    (dispatch) => ({
+        SidebarOpenAction: bindActionCreators(actionCreators, dispatch),
+    }),
+)(AdminNavbar);
+// export default AdminNavbar;

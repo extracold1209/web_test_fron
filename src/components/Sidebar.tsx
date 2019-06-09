@@ -6,24 +6,27 @@ import { Link, NavLink, RouteComponentProps } from 'react-router-dom';
 import PerfectScrollbar from 'perfect-scrollbar';
 
 // reactstrap components
+import { connect } from 'react-redux';
 import { Nav } from 'reactstrap';
+import { IStoreState } from 'src/store/modules';
 import Logo from './Logo';
 
 let ps: PerfectScrollbar;
 
 type bgColors = 'primary' | 'blue' | 'green';
 interface IProps extends RouteComponentProps {
-  rtlActive: boolean;
   bgColor: bgColors;
+  sidebarOpened: false;
   routes: any[];
-  toggleSidebar: () => any;
 }
 
 class Sidebar extends React.Component<IProps> {
   public static defaultProps = {
     rtlActive: false,
     bgColor: 'primary' as 'primary',
-    routes: [{}],
+    routes: [{
+      name: 'Hello World',
+    }],
   };
 
   constructor(props: Readonly<IProps>) {
@@ -51,7 +54,13 @@ class Sidebar extends React.Component<IProps> {
     document.documentElement.classList.remove('nav-open');
   }
   public render() {
-    const { bgColor, routes, rtlActive } = this.props;
+    const { bgColor, routes } = this.props;
+
+    if (this.props.sidebarOpened) {
+      document.documentElement.classList.add('nav-open');
+    } else {
+      document.documentElement.classList.remove('nav-open');
+    }
 
     return (
       <div className='sidebar' data-data={bgColor}>
@@ -72,10 +81,10 @@ class Sidebar extends React.Component<IProps> {
                     to={prop.layout + prop.path}
                     className='nav-link'
                     activeClassName='active'
-                    onClick={this.props.toggleSidebar}
+                    onClick={() => { console.log('navLink Clicked'); }}
                   >
                     <i className={prop.icon} />
-                    <p>{rtlActive ? prop.rtlName : prop.name}</p>
+                    <p>{prop.name}</p>
                   </NavLink>
                 </li>
               );
@@ -87,4 +96,8 @@ class Sidebar extends React.Component<IProps> {
   }
 }
 
-export default Sidebar;
+export default connect(
+  ({ sidebar }: IStoreState) => ({ sidebarOpened: sidebar.sidebarOpened }),
+  undefined,
+)(Sidebar);
+// export default Sidebar;
