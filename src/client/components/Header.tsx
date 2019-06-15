@@ -165,6 +165,14 @@ class AdminNavbar extends React.Component<IProps, IState> {
     }
 
     private makeNotificationButton() {
+        const title = 'Notifications';
+        const icon = 'icon-sound-wave';
+        const dummyNotificationList = [
+            'Mike John responded to your email',
+            'You have 5 more tasks',
+            'Your friend Michael is in town',
+        ];
+
         return (
             <UncontrolledDropdown nav>
                 <DropdownToggle
@@ -174,35 +182,17 @@ class AdminNavbar extends React.Component<IProps, IState> {
                     nav
                 >
                     <div className='notification d-none d-lg-block d-xl-block' />
-                    <i className='tim-icons icon-sound-wave' />
-                    <p className='d-lg-none'>Notifications</p>
+                    <i className={`tim-icons ${icon}`} />
+                    <p className='d-lg-none'>{title}</p>
                 </DropdownToggle>
                 <DropdownMenu className='dropdown-navbar' right tag='ul'>
-                    <NavLink tag='li'>
-                        <DropdownItem className='nav-item'>
-                            Mike John responded to your email
-                      </DropdownItem>
-                    </NavLink>
-                    <NavLink tag='li'>
-                        <DropdownItem className='nav-item'>
-                            You have 5 more tasks
-                      </DropdownItem>
-                    </NavLink>
-                    <NavLink tag='li'>
-                        <DropdownItem className='nav-item'>
-                            Your friend Michael is in town
-                      </DropdownItem>
-                    </NavLink>
-                    <NavLink tag='li'>
-                        <DropdownItem className='nav-item'>
-                            Another notification
-                      </DropdownItem>
-                    </NavLink>
-                    <NavLink tag='li'>
-                        <DropdownItem className='nav-item'>
-                            Another one
-                      </DropdownItem>
-                    </NavLink>
+                    {dummyNotificationList.map((notiContent) =>
+                        <NavLink tag='li'>
+                            <DropdownItem className='nav-item'>
+                                {notiContent}
+                            </DropdownItem>
+                        </NavLink>,
+                    )}
                 </DropdownMenu>
             </UncontrolledDropdown>
         );
