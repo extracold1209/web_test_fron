@@ -27,9 +27,7 @@ ReactDOM.render(
         <Route path='/' render={(props) => <Sidebar
           {...props} />} />
         <div className='main-panel'>
-          <Header
-            brandText={'Hello Header'}
-          />
+          <Header />
           <Switch>
             <Route exact={true} path='/' render={(props) => <App {...props} />} />
             {/* <Route path="/rtl" render={props => <RTLLayout {...props} />} /> */}
