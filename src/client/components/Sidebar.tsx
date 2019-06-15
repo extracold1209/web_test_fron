@@ -65,7 +65,9 @@ class Sidebar extends React.Component<IProps> {
     return (
       <div className='sidebar' data-data={bgColor}>
         <div className='sidebar-wrapper' ref='sidebar'>
-          <Logo />
+          <Logo
+            linkText='creative Tim'
+          />
           <Nav>
             {routes.map((prop, key) => {
               if (prop.redirect) { return null; }
