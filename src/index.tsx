@@ -25,7 +25,6 @@ ReactDOM.render(
     <Router history={hist}>
       <div className='wrapper'>
         <Route path='/' render={(props) => <Sidebar
-          toggleSidebar={() => { console.log('toggle Sidebar'); }}
           {...props} />} />
         <div className='main-panel'>
           <Header

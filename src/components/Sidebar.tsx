@@ -16,7 +16,7 @@ let ps: PerfectScrollbar;
 type bgColors = 'primary' | 'blue' | 'green';
 interface IProps extends RouteComponentProps {
   bgColor: bgColors;
-  sidebarOpened: false;
+  sidebarOpened: boolean;
   routes: any[];
 }
 
