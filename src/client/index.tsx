@@ -1,21 +1,21 @@
+import App from '@components/App';
+import Footer from '@components/Footer';
+import Header from '@components/Header';
+import Sidebar from '@components/Sidebar';
+import Reducer from '@store/modules';
 import { createBrowserHistory } from 'history';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Redirect, Route, Router, Switch } from 'react-router-dom';
 import { createStore } from 'redux';
-import App from './components/App';
-import Footer from './components/Footer';
-import Header from './components/Header';
-import Sidebar from './components/Sidebar';
-import Reducer from './store/modules';
 
 // import AdminLayout from "layouts/Admin/Admin.jsx";
 // import RTLLayout from "layouts/RTL/RTL.jsx";
 
-import './assets/css/nucleo-icons.css';
-import './assets/demo/demo.css';
-import './assets/scss/black-dashboard-react.scss';
+import '@assets/css/nucleo-icons.css';
+import '@assets/demo/demo.css';
+import '@assets/scss/black-dashboard-react.scss';
 
 const hist = createBrowserHistory();
 const store = createStore(Reducer);

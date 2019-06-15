@@ -1,9 +1,10 @@
 // nodejs library that concatenates classes
+import { actionCreators } from '@store/modules/sidebar';
 import classNames from 'classnames';
 import React from 'react';
-import { actionCreators } from '../store/modules/sidebar';
 
 // reactstrap components
+import { IStoreState } from '@store/modules';
 import { connect } from 'react-redux';
 import {
     Button,
@@ -22,7 +23,9 @@ import {
     UncontrolledDropdown,
 } from 'reactstrap';
 import { bindActionCreators } from 'redux';
-import { IStoreState } from 'src/store/modules';
+
+// dummy image
+import anime3 from '@assets/img/anime3.png';
 
 interface IProps {
     sidebarOpened: boolean;
@@ -190,7 +193,7 @@ class AdminNavbar extends React.Component<IProps, IState> {
                                         onClick={(e) => e.preventDefault()}
                                     >
                                         <div className='photo'>
-                                            <img alt='...' src={require('../assets/img/anime3.png')} />
+                                            <img alt='...' src={anime3} />
                                         </div>
                                         <b className='caret d-none d-lg-block d-xl-block' />
                                         <p className='d-lg-none'>Log out</p>

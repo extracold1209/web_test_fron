@@ -1,5 +1,5 @@
+import logo from '@assets/img/react-logo.png';
 import React from 'react';
-import logo from '../assets/img/react-logo.png';
 
 interface IProps {
     onLogoClicked?: () => any;

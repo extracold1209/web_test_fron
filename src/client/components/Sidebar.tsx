@@ -6,10 +6,10 @@ import { Link, NavLink, RouteComponentProps } from 'react-router-dom';
 import PerfectScrollbar from 'perfect-scrollbar';
 
 // reactstrap components
+import Logo from '@components/Logo';
+import { IStoreState } from '@store/modules';
 import { connect } from 'react-redux';
 import { Nav } from 'reactstrap';
-import { IStoreState } from 'src/store/modules';
-import Logo from './Logo';
 
 let ps: PerfectScrollbar;
 
