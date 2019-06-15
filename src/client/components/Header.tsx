@@ -1,11 +1,12 @@
 // nodejs library that concatenates classes
+import Hamburger from '@components/atoms/hamburger';
+import { IStoreState } from '@store/modules';
 import { actionCreators } from '@store/modules/sidebar';
 import classNames from 'classnames';
 import React from 'react';
+import { connect } from 'react-redux';
 
 // reactstrap components
-import { IStoreState } from '@store/modules';
-import { connect } from 'react-redux';
 import {
     Button,
     Collapse,
@@ -88,6 +89,9 @@ class AdminNavbar extends React.Component<IProps, IState> {
         });
     }
     public render() {
+        const { sidebarOpened, SidebarOpenAction} = this.props;
+
+        console.log('isOpened? ', sidebarOpened);
         return (
             <>
                 <Navbar
@@ -96,23 +100,10 @@ class AdminNavbar extends React.Component<IProps, IState> {
                 >
                     <Container fluid>
                         <div className='navbar-wrapper'>
-                            <div
-                                className={classNames('navbar-toggle d-inline', {
-                                    toggled: this.props.sidebarOpened,
-                                })}
-                            >
-                                <button
-                                    className='navbar-toggler'
-                                    type='button'
-                                    onClick={() => {
-                                        this.props.SidebarOpenAction.toggleSidebar();
-                                    }}
-                                >
-                                    <span className='navbar-toggler-bar bar1' />
-                                    <span className='navbar-toggler-bar bar2' />
-                                    <span className='navbar-toggler-bar bar3' />
-                                </button>
-                            </div>
+                            <Hamburger
+                                isOpened={sidebarOpened}
+                                onClick={() => SidebarOpenAction.toggleSidebar()}
+                            />
                             <NavbarBrand href='#pablo' onClick={(e) => e.preventDefault()}>
                                 {this.props.brandText}
                             </NavbarBrand>
@@ -245,4 +236,3 @@ export default connect(
         SidebarOpenAction: bindActionCreators(actionCreators, dispatch),
     }),
 )(AdminNavbar);
-// export default AdminNavbar;
