@@ -11,7 +11,6 @@ import { Redirect, Route, Router, Switch } from 'react-router-dom';
 import { createStore } from 'redux';
 
 // import AdminLayout from "layouts/Admin/Admin.jsx";
-// import RTLLayout from "layouts/RTL/RTL.jsx";
 
 import '@assets/css/nucleo-icons.css';
 import '@assets/scss/black-dashboard-react.scss';
@@ -29,7 +28,6 @@ ReactDOM.render(
           <Header />
           <Switch>
             <Route exact={true} path='/' render={(props) => <App {...props} />} />
-            {/* <Route path="/rtl" render={props => <RTLLayout {...props} />} /> */}
             {/* <Redirect from="/" to="/admin/dashboard" /> */}
           </Switch>
           <Footer />
