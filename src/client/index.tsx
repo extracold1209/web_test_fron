@@ -14,7 +14,6 @@ import { createStore } from 'redux';
 // import RTLLayout from "layouts/RTL/RTL.jsx";
 
 import '@assets/css/nucleo-icons.css';
-import '@assets/demo/demo.css';
 import '@assets/scss/black-dashboard-react.scss';
 
 const hist = createBrowserHistory();
