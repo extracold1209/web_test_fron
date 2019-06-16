@@ -14,6 +14,7 @@ import { createStore } from 'redux';
 
 import '@assets/css/nucleo-icons.css';
 import '@assets/scss/black-dashboard-react.scss';
+import GenericNotFound from '@components/GenericNotFound';
 
 const hist = createBrowserHistory();
 const store = createStore(Reducer);
@@ -28,7 +29,7 @@ ReactDOM.render(
           <Header />
           <Switch>
             <Route exact={true} path='/' render={(props) => <App {...props} />} />
-            {/* <Redirect from="/" to="/admin/dashboard" /> */}
+            <Route component={GenericNotFound} />
           </Switch>
           <Footer />
         </div>
