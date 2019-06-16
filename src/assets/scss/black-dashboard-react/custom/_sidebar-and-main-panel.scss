@@ -52,6 +52,8 @@
     > .nav,
     .user .info{
       [data-toggle="collapse"] ~ div > ul > li > a{
+        font-size: 16px;
+
         span{
           display: inline-block;
           // @extend .animation-transition-general;
@@ -158,7 +160,7 @@
         text-decoration: none;
         position: relative;
         cursor: pointer;
-        font-size: $font-size-xs;
+        font-size: $font-size-base;
         padding: 10px 8px;
         line-height: $line-height-lg;
       }

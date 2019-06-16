@@ -48,7 +48,6 @@ class Sidebar extends React.Component<IProps> {
   }
   // verifies if routeName is the one active (in browser input)
   public activeRoute(routeName: string) {
-    console.log(this.props.location);
     return this.props.location.pathname === routeName ? 'active' : '';
   }
   public componentDidMount() {
@@ -80,7 +79,7 @@ class Sidebar extends React.Component<IProps> {
       <div className='sidebar' data-data={bgColor}>
         <div className='sidebar-wrapper' ref='sidebar'>
           <Logo
-            linkText='creative Tim'
+            linkText='Creative Tim'
           />
           <Nav>
             {routes.map((prop, key) => {

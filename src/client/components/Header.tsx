@@ -40,7 +40,7 @@ interface IState {
     color: string;
 }
 
-class AdminNavbar extends React.Component<IProps, IState> {
+class Header extends React.Component<IProps, IState> {
     private get headerText() {
         return 'Hello Header';
     }
@@ -187,7 +187,10 @@ class AdminNavbar extends React.Component<IProps, IState> {
                 </DropdownToggle>
                 <DropdownMenu className='dropdown-navbar' right tag='ul'>
                     {dummyNotificationList.map((notiContent) =>
-                        <NavLink tag='li'>
+                        <NavLink
+                            tag='li'
+                            key={notiContent}
+                        >
                             <DropdownItem className='nav-item'>
                                 {notiContent}
                             </DropdownItem>
@@ -239,4 +242,4 @@ export default connect(
     (dispatch) => ({
         SidebarOpenAction: bindActionCreators(actionCreators, dispatch),
     }),
-)(AdminNavbar);
+)(Header);
