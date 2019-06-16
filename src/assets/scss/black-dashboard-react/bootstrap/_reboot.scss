@@ -345,11 +345,6 @@ input {
   overflow: visible; // Show the overflow in Edge
 }
 
-button,
-select {
-  text-transform: none; // Remove the inheritance of text transform in Firefox
-}
-
 // 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
 //    controls in Android 4.
 // 2. Correct the inability to style clickable types in iOS and Safari.

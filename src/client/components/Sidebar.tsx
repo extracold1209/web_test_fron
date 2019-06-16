@@ -14,19 +14,32 @@ import { Nav } from 'reactstrap';
 let ps: PerfectScrollbar;
 
 type bgColors = 'primary' | 'blue' | 'green';
+
+interface ISidebarRoute {
+  name: string;
+  icon?: string;
+  path: string;
+}
+
 interface IProps extends RouteComponentProps {
   bgColor: bgColors;
   sidebarOpened: boolean;
-  routes: any[];
+  routes: ISidebarRoute[];
 }
 
 class Sidebar extends React.Component<IProps> {
   public static defaultProps = {
-    rtlActive: false,
-    bgColor: 'primary' as 'primary',
-    routes: [{
-      name: 'Hello World',
-    }],
+    bgColor: 'primary' as bgColors,
+    routes: [
+      {
+        name: 'Hello World',
+        path: '/',
+      },
+      {
+        name: 'toTest',
+        path: '/test',
+      },
+    ],
   };
 
   constructor(props: Readonly<IProps>) {
@@ -35,7 +48,8 @@ class Sidebar extends React.Component<IProps> {
   }
   // verifies if routeName is the one active (in browser input)
   public activeRoute(routeName: string) {
-    return this.props.location.pathname.indexOf(routeName) > -1 ? 'active' : '';
+    console.log(this.props.location);
+    return this.props.location.pathname === routeName ? 'active' : '';
   }
   public componentDidMount() {
     if (navigator.platform.indexOf('Win') > -1) {
@@ -70,17 +84,15 @@ class Sidebar extends React.Component<IProps> {
           />
           <Nav>
             {routes.map((prop, key) => {
-              if (prop.redirect) { return null; }
+              // if (prop.redirect) { return null; }
+              // <li className= (prop.pro ? ' active-pro' : '') />
               return (
                 <li
-                  className={
-                    this.activeRoute(prop.path) +
-                    (prop.pro ? ' active-pro' : '')
-                  }
+                  className={this.activeRoute(prop.path)}
                   key={key}
                 >
                   <NavLink
-                    to={prop.layout + prop.path}
+                    to={prop.path}
                     className='nav-link'
                     activeClassName='active'
                     onClick={() => { console.log('navLink Clicked'); }}
