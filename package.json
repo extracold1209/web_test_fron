@@ -44,7 +44,7 @@
   "dependencies": {
     "@types/history": "^4.7.2",
     "@types/react-router-dom": "^4.3.3",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "prop-types": "^15.6.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
